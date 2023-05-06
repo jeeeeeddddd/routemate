@@ -7,6 +7,9 @@ import { ProductDetail } from "./components/ProductDetail";
 import { Contact } from "./components/Contact";
 import { Admin } from "./components/Admin";
 import { PageNotFound } from "./components/PageNotFound";
+import { ContactPh } from "./components/ContactPh";
+import { ContactUs } from "./components/ContactUs";
+import { ContactUk } from "./components/ContactUk";
 import './App.css';
 
 function App() {
@@ -21,7 +24,12 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="products" element={<ProductList />} />
             <Route path="products/:id" element={<ProductDetail />} />
-            <Route path="contact" element={<Contact />} />
+            <Route path="contact" element={<Contact />}>
+              <Route path="ph" element={<ContactPh />} />
+              <Route path="us" element={<ContactUs />} />
+              <Route path="uk" element={<ContactUk />} />
+              <Route path="*" element={<ContactPh />} />
+            </Route>
             <Route path="admin" element={user ? <Admin /> : <Navigate to="/" />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
